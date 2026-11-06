@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An educational blockchain proof-of-work and proof-of-stake simulation.">
+<title>ChainLab — Blockchain Consensus Simulator</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">⛓</span><span>ChainLab</span></div><span class="tag">EDUCATIONAL SIMULATOR</span></header>
+<main class="shell">
+<section class="intro"><p class="eyebrow">BLOCKCHAIN PERFORMANCE LAB</p><h1>See how consensus<br><span>changes the chain.</span></h1><p class="intro-copy">Create transactions, mine blocks, test tamper detection, and compare a simplified Proof of Work model with Proof of Stake.</p></section>
+<section class="stats-grid" aria-label="Network statistics">
+<article class="stat-card"><span>Blocks</span><strong id="block-count">1</strong><small>Including genesis</small></article>
+<article class="stat-card"><span>Transactions</span><strong id="tx-count">0</strong><small>Confirmed on chain</small></article>
+<article class="stat-card"><span>PoW attempts</span><strong id="attempt-count">0</strong><small>Total simulated hashes</small></article>
+<article class="stat-card"><span>Chain status</span><strong id="chain-status" class="status-good">Valid</strong><small id="chain-status-note">All hashes match</small></article>
+</section>
+<section class="workspace">
+<div class="panel controls-panel">
+<div class="panel-heading"><div><p class="eyebrow">01 / TRANSACTIONS</p><h2>Send a transaction</h2></div><span class="step-dot">1</span></div>
+<form id="transaction-form" class="transaction-form">
+<label>From<input id="sender" maxlength="32" value="Alice" required></label><label>To<input id="recipient" maxlength="32" value="Bob" required></label><label>Amount<input id="amount" type="number" min="0.01" max="1000000" step="0.01" value="12.5" required></label>
+<button class="button button-primary" type="submit">Add transaction <span>＋</span></button></form>
+<div class="subheading"><h3>Pending transactions</h3><span id="pending-count" class="count-pill">0</span></div><ul id="pending-list" class="transaction-list empty-list"><li>No pending transactions yet.</li></ul>
+<div class="divider"></div><div class="panel-heading"><div><p class="eyebrow">02 / CONSENSUS</p><h2>Mine the next block</h2></div><span class="step-dot">2</span></div>
+<label class="range-label" for="difficulty">Proof of Work difficulty <strong id="difficulty-value">3</strong></label><input id="difficulty" class="range" type="range" min="1" max="5" value="3">
+<p class="hint">Difficulty means how many leading zeroes the block hash must have. Higher difficulty usually requires more attempts.</p>
+<div class="button-row"><button id="mine-button" class="button button-primary">Mine with PoW</button><button id="pos-button" class="button button-secondary">Simulate PoS</button></div>
+<p id="mine-result" class="result-message" role="status">Add a transaction, then choose a consensus method.</p>
+</div>
+<div class="panel chain-panel"><div class="panel-heading"><div><p class="eyebrow">03 / LEDGER</p><h2>Blockchain</h2></div><button id="reset-button" class="text-button">Reset demo</button></div><div id="chain-list" class="chain-list"></div></div>
+</section>
+<section class="lower-grid">
+<article class="panel comparison-panel"><div class="panel-heading"><div><p class="eyebrow">04 / PERFORMANCE</p><h2>Consensus comparison</h2></div></div>
+<div class="comparison-table-wrap"><table><thead><tr><th>Measure</th><th>Proof of Work</th><th>Proof of Stake model</th></tr></thead><tbody>
+<tr><td>Block creation</td><td>Searches for a valid nonce</td><td>Selected validator proposes</td></tr><tr><td>Work performed</td><td id="pow-work">0 hash attempts</td><td>One selection step (model)</td></tr><tr><td>Energy indicator</td><td id="pow-energy">0 relative units</td><td>Low computational work (model)</td></tr><tr><td>Security check</td><td>Hash + previous hash</td><td>Hash + previous hash</td></tr>
+</tbody></table></div><p class="footnote">This is a teaching model, not a live blockchain. The PoS column illustrates lower computational work; it does not implement economic staking, slashing, or a production consensus protocol. Relative energy units are based only on simulated hash attempts.</p></article>
+<article class="panel tamper-panel"><div class="panel-heading"><div><p class="eyebrow">05 / SECURITY TEST</p><h2>Tamper detection</h2></div></div><p class="body-copy">Change the data in a confirmed block to see why altering one block breaks the hash links that follow it.</p>
+<label for="tamper-select">Choose a block</label><select id="tamper-select"></select><label for="tamper-text">Replacement data</label><input id="tamper-text" maxlength="80" value="Unauthorised change"><button id="tamper-button" class="button button-warning">Tamper with selected block</button><p class="hint">Use Reset demo to restore the original chain.</p></article>
+</section>
+<footer><span>ChainLab · Beginner-friendly blockchain simulation</span><span>Runs locally in your browser · No wallet or real tokens</span></footer>
+</main><script src="app.js"></script></body></html>
