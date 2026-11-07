@@ -28,7 +28,7 @@
 <div class="button-row"><button id="mine-button" class="button button-primary">Mine with PoW</button><button id="pos-button" class="button button-secondary">Simulate PoS</button></div>
 <p id="mine-result" class="result-message" role="status">Add a transaction, then choose a consensus method.</p>
 </div>
-<div class="panel chain-panel"><div class="panel-heading"><div><p class="eyebrow">03 / LEDGER</p><h2>Blockchain</h2></div><button id="reset-button" class="text-button">Reset demo</button></div><div id="chain-list" class="chain-list"></div></div>
+<div class="panel chain-panel"><div class="panel-heading"><div><p class="eyebrow">03 / LEDGER</p><h2>Blockchain</h2></div><button id="reset-button" class="text-button">Restore original chain</button></div><div id="chain-list" class="chain-list"></div></div>
 </section>
 <section class="lower-grid">
 <article class="panel comparison-panel"><div class="panel-heading"><div><p class="eyebrow">04 / PERFORMANCE</p><h2>Consensus comparison</h2></div></div>
@@ -36,7 +36,7 @@
 <tr><td>Block creation</td><td>Searches for a valid nonce</td><td>Selected validator proposes</td></tr><tr><td>Work performed</td><td id="pow-work">0 hash attempts</td><td>One selection step (model)</td></tr><tr><td>Energy indicator</td><td id="pow-energy">0 relative units</td><td>Low computational work (model)</td></tr><tr><td>Security check</td><td>Hash + previous hash</td><td>Hash + previous hash</td></tr>
 </tbody></table></div><p class="footnote">This is a teaching model, not a live blockchain. The PoS column illustrates lower computational work; it does not implement economic staking, slashing, or a production consensus protocol. Relative energy units are based only on simulated hash attempts.</p></article>
 <article class="panel tamper-panel"><div class="panel-heading"><div><p class="eyebrow">05 / SECURITY TEST</p><h2>Tamper detection</h2></div></div><p class="body-copy">Change the data in a confirmed block to see why altering one block breaks the hash links that follow it.</p>
-<label for="tamper-select">Choose a block</label><select id="tamper-select"></select><label for="tamper-text">Replacement data</label><input id="tamper-text" maxlength="80" value="Unauthorised change"><button id="tamper-button" class="button button-warning">Tamper with selected block</button><p class="hint">Use Reset demo to restore the original chain.</p></article>
+<label for="tamper-select">Choose a block</label><select id="tamper-select"></select><label for="tamper-text">Replacement data</label><input id="tamper-text" maxlength="80" value="Unauthorised change"><button id="tamper-button" class="button button-warning">Tamper with selected block</button><p class="hint">Use Restore original chain to clear the test and return to the genesis block.</p></article>
 </section>
 <footer><span>ChainLab · Beginner-friendly blockchain simulation</span><span>Runs locally in your browser · No wallet or real tokens</span></footer>
 </main><script src="app.js"></script></body></html>
